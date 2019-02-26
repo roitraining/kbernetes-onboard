@@ -21,7 +21,13 @@ sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' config.py
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' main.py
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' kubernetes-config.yaml
 sed -i 's/hiplocal.kwikstart.net/'"$MYDOMAIN"'/g' kubernetes-config.yaml
+echo 'deploying appengine default service'
+yes Y | gcloud app deploy
+echo 'deploying appengine backend service'
+cd ../backend
+yes Y | gcloud app deploy
 echo 'completed successfully'
+echo 'use app engine to create a few happenings'
 
 
 

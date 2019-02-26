@@ -14,6 +14,9 @@ You must have all of the following available:
 1. A domain you control where you can add DNS entries
     (this is required for authentication using firebase)
 2. The ability to create GCP projects
+3. At least 3GB space available in cloud shell - some demos use large docker images
+   (you might be able to get away with less if you delete as you go)
+4. You must have a docker id/login
 
 
 # Prerequisites before you run any setup scripts:
@@ -22,6 +25,8 @@ You must do the following:
 
 1. Create a new google cloud project to host the onboard example
 2. Use the cloud console to create an empty Firestore database
+    WARNING ! If you don't create the firestore db, the setup script will 
+    permanently ruin your project and you will have to create a new one.
 3. Run the following command in cloud shell in your new project to create a static ip  called 'hip-local':
 
     gcloud compute addresses create hip-local --global
@@ -65,6 +70,9 @@ chmod +x setup.sh
 
 # Congratulations - your project is set up.
 # This gives you the base application BEFORE any docker or kubernetes config
+
+9. Use the app engine application to add some happenings, with pictures,
+   to give an attractive start-point for the app
 
 # OPTIONAL: Setting up your local environment
 
