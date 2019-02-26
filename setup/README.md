@@ -81,8 +81,9 @@ If you are going to run the apps on your machine, you need to do the following:
     - you may also need to set up a virtual env for python
         - on my machine, the command is: python3 -m venv env
     - you can then run the frontend from the frontend folder using:
-        python3 ./main.py
-        (or simply python ./main.py if you have python3 mapped to python)
+        python3 main.py
+        (or simply python main.py if you have python3 mapped to python)
+        it will take a little while to stat up, but will tell you to browse to :8080
 6. To run the node application...
     - you will need to install from package.json
         - open a terminal in the backend folder and type:

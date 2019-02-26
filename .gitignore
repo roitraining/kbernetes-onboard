@@ -1,0 +1,8 @@
+**/node_modules
+**/*npm-debug.log.*
+**/*.log
+**/*.txt
+.DS_Store
+.vscode
+__pycache__/
+env/
