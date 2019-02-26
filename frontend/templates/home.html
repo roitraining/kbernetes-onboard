@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block title %}
+Hip Local
+{% endblock %}
+{% block content %}
+<div class="mdl-grid portfolio-max-width">
+<span class="mdl-layout-title">{{model.greeting}}</span>
+</div>
+<div class="mdl-grid portfolio-max-width">
+{% for happening in model.happenings %}
+    <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+        <div class="mdl-card__media">
+            {% if happening['image'].strip() != "" %}
+                <img class="article-image" src="https://storage.googleapis.com/{{bucket}}/{{happening['image']}}.jpg" border="0" alt="">
+            {% else %}
+            <img class="article-image" src="https://storage.googleapis.com/{{bucket}}/NoImage.jpg" border="0" alt="">
+            {% endif %}
+           </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">{{happening['name']}}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            {{happening['description']}}
+        </div>
+        
+        <div class="mdl-card__actions mdl-card--border">
+                <a href="/happening/like/{{happening['id']}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect likeaction">
+                    <span class="like">&#128077;</span> &nbsp;
+                 <span class="like" id="{{happening['id']}}">Likes: {{happening['likes']}}</span> </a>
+    
+            </div>
+
+    </div>
+{% endfor %}
+{% if not 'happenings' in model %}
+<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Sorry</h2>
+    </div>
+
+    <div class="mdl-grid portfolio-copy">
+        It looks like the events service isn't running just now.
+    </div>
+</div>
+
+{% endif %}
+</div>
+<script>
+	$(".likeaction").css( 'cursor', 'pointer' ).click(function(e){ 
+        e.preventDefault();  
+        var $this = this;	
+    	$.get(this.href, function(data, status){
+        	var response = JSON.parse(data);
+        	var likeID = $this.href.substring($this.href.lastIndexOf('/') + 1, $this.href.length);
+        	document.getElementById(likeID).innerHTML = "Likes: " + response.likes;
+    });
+});
+
+</script>
+{% endblock %}

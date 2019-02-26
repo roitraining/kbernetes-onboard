@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}
+About Hip Local
+{% endblock %}
+{% block content %}
+
+<div class="mdl-grid portfolio-max-width">
+    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">About Hip Local</h2>
+        </div>
+        <div class="mdl-card__media">
+            <img class="article-image" src="{{ url_for('static', filename='images/about-header.jpg')}}" border="0" alt="">
+        </div>
+
+        <div class="mdl-grid portfolio-copy">
+            <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Who are we?</h3>
+            <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
+                <p>
+                        HipLocal is a community application designed to facilitate communication between people in close proximity. It is used for event planning and organizing sporting events, and for businesses to connect with their local communities. HipLocal launched recently in a few neighborhoods in Dallas and is rapidly growing into a global phenomenon. Its unique style of hyper-local community communication and business outreach is in demand around the world.                </p>
+            </div>
+
+            <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Going Global</h3>
+
+            <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
+                <p>
+                        We are the number one local community app; it’s time to take our local community services global. Our venture capital investors want to see rapid growth and the same great experience for new local and virtual communities that come online, whether their members are 10 or 10000 miles away from each other.                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
