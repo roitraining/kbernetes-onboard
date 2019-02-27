@@ -16,7 +16,7 @@ gcloud functions deploy make_thumbnail --runtime python37 --trigger-resource $GO
 echo 'using sed to update demo sample code to reference your project and domain'
 cd ../setup/demos
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' *
-sed -i 's/hiplocal.kwikstart.net/'"$MYDOMAIN"'/g' *
+sed -i 's/hipkube.kwikstart.net/'"$MYDOMAIN"'/g' *
 cd ../../frontend
 echo 'using sed to update py files in frontend to your project'
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' config.py
