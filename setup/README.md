@@ -24,7 +24,7 @@ You must have all of the following available:
 You must do the following:
 
 1. Create a new google cloud project to host the onboard example
-2. Use the cloud console to create an empty Firestore database
+2. Use the cloud console to create an empty Firestore database.
     WARNING ! If you don't create the firestore db, the setup script will 
     permanently ruin your project and you will have to create a new one.
 3. Run the following command in cloud shell in your new project to create a static ip  called 'hip-local':
