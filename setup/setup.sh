@@ -21,9 +21,12 @@ cd ../../frontend
 echo 'using sed to update py files in frontend to your project'
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' config.py
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' main.py
-echo 'creating onboard repository in your project'
+echo 'commiting all changes to local git'
+git commit -A
+git commit -m "Project and domain updated"
+echo 'creating hiplocal repository in your gcp project'
 gcloud source repos create hiplocal
-echo 'adding as remote of local git under name google and pushing code to repo'
+echo 'adding hiplocal as remote of local git and pushing code to repo'
 git remote add hiplocal https://source.developers.google.com/p/$GOOGLE_CLOUD_PROJECT/r/hiplocal
 git push --all hiplocal
 echo 'deploying appengine default service'

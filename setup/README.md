@@ -1,8 +1,10 @@
-Setting up the onboard application.
+# Setting up the onboard application.
+
+# WARNING!  THERE ARE STEPS YOU MUST COMPLETE BEFORE RUNNING THE SETUP SCRIPT
 
 The app has been designed (and appropriate ports used) to allow you to run all of the activities/demos from cloud shell.  However, it would be helpful if you could also configure your environment to run the non-containerized application on your laptop.  This then supports the story of: how do I get from my environment into kubernetes engine. 
 
-In order to run the app locally, you will need to install node and python3.  The backend api is a simple node application using express.  The frontend is a python3 flask application.  
+Guidance for setting up and running the app locally are at the bottom of this file.  The backend api is a simple node application using express.  The frontend is a python3 flask application.  
 
 Regardless of whether you demo locally at the beginning, or exclusively in cloud shell, 
 you will need to set up a cloud  project and configure it appropriately. There are helpful setup scripts, but some steps cannot, at time of writing, be scripted.
@@ -18,8 +20,7 @@ You must have all of the following available:
    (you might be able to get away with less if you delete as you go)
 4. You must have a docker id/login
 
-
-# Prerequisites before you run any setup scripts:
+# Prerequisites before you run the setup script:
 
 You must do the following:
 
@@ -38,7 +39,7 @@ You must do the following:
 10. Copy the web setup config from firebase (you will need it very soon)
 
 
-# Setting up the environment
+# Setting up the environment and running the script
 1. Open a cloud shell window in your new project and create a new 'hip' directory, then cd into it:
 
     mkdir hip
@@ -80,19 +81,20 @@ If you are going to run the apps on your machine, you need to do the following:
 
 1. install node
 2. install python3
-3. download the onboard repo
-4. Use your development environment to find and replace all references to kr-dr-temp-hip with the id of your google cloud project.
-5. To run the python app...
+3. clone the hiplocal repo from your project - this will give you the correct project ids etc
+4. To run the python app...
     - you will need to install from requirements.txt
-        - on my machine, the command is: /usr/local/bin/pip3 install -r requirements.txt
-        - your command may will be simpler/different
+        - on my machine, the command is: 
+                /usr/local/bin/pip3 install -r requirements.txt
+        - your command may well be simpler/different
     - you may also need to set up a virtual env for python
-        - on my machine, the command is: python3 -m venv env
+        - on my machine, the command is: 
+                python3 -m venv env
     - you can then run the frontend from the frontend folder using:
-        python3 main.py
+            python3 main.py
         (or simply python main.py if you have python3 mapped to python)
-        it will take a little while to stat up, but will tell you to browse to :8080
-6. To run the node application...
+        it will take a little while to start up, but should eventually tell you to browse to :8080
+5. To run the node application...
     - you will need to install from package.json
         - open a terminal in the backend folder and type:
             npm install
