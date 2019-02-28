@@ -4,6 +4,7 @@ echo 'enabling required apis'
 gcloud services enable container.googleapis.com  
 gcloud services enable vision.googleapis.com
 gcloud services enable cloudfunctions.googleapis.com
+gcloud services enable sourcerepo.googleapis.com
 echo 'creating bucket with same name as projet and copying in default images'
 gsutil mb -c multi_regional gs://$GOOGLE_CLOUD_PROJECT/
 gsutil cp ../frontend/static/images/NoImage.jpg gs://$GOOGLE_CLOUD_PROJECT/
@@ -22,8 +23,7 @@ echo 'using sed to update py files in frontend to your project'
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' config.py
 sed -i 's/kr-dr-temp-hip/'"$GOOGLE_CLOUD_PROJECT"'/g' main.py
 echo 'commiting all changes to local git'
-git commit -A
-git commit -m "Project and domain updated"
+git commit -a -m "Project and domain updated"
 echo 'creating hiplocal repository in your gcp project'
 gcloud source repos create hiplocal
 echo 'adding hiplocal as remote of local git and pushing code to repo'
