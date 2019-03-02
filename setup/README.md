@@ -8,18 +8,18 @@ be able to demonstrate the fulling working app in cloud shell, just individual p
 Guidance for setting up and running the app locally are at the bottom of this file.  The backend api is a simple node application using express.  The frontend is a python3 flask application.  
 
 Regardless of whether you demo locally at the beginning, or exclusively in cloud shell, 
-you will need to set up a cloud  project and configure it appropriately. There are helpful setup scripts, but some steps cannot, at time of writing, be scripted.
+you will need to follow the instructions below to set up a cloud  project and configure it appropriately. There are helpful setup scripts, but some steps cannot, at time of writing, be scripted.
 
 # Prerequisites before you do anything at all:
 
-You must have all of the following available:
+You must have all of the following:
 
 1. A domain you control where you can add DNS entries
     (this is required for authentication using firebase)
 2. The ability to create GCP projects
 3. At least 3GB space available in cloud shell - some demos use large docker images
    (you might be able to get away with less if you delete as you go)
-4. You must have a docker id/login
+4. A docker id/login
 
 # Prerequisites before you run the setup script:
 
@@ -27,13 +27,12 @@ You must do the following:
 
 1. Create a new google cloud project to host the onboard example
 2. Use the cloud console to create an empty Firestore database in the US Region
-    WARNING ! If you don't create the firestore db, the setup script will 
-    permanently ruin your project and you will have to create a new one and start again
-3. Run the following command in cloud shell in your new project to create a static ip  called 'hip-local':
+    WARNING! If you don't create the firestore db before you run the setup script, you will have to start again in a new project: the appengine deployment will (at least at the time of writing) permanently configure your project to use datastore instead. 
+3. Run the following command in cloud shell in your new project to create a static ip called 'hip-local':
 
     gcloud compute addresses create hip-local --global
     
-4. Find the ip in the console, go to the DNS management screens for a domain name you control and create DNS entry for hiplocal.yourdomain.ext pointing at the hip-local static ip address
+4. Find the ip in the console, go to the DNS management screens for a domain name you control and create a DNS entry for hiplocal.[yourdomain.ext] pointing at the hip-local static ip address
 
 
 # Setting up the environment and running the script
@@ -114,3 +113,5 @@ If you are going to run the apps on your machine, you need to do/have the follow
             npm install
         - you should then be able to start the backend using:
             npm start
+
+# If you choose not to set it up locally (or don't have the time), you will need to demo in cloud shell.  That will involve many of the same steps as above, but with less installation of basic tools.
