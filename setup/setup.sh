@@ -5,6 +5,7 @@ gcloud services enable container.googleapis.com
 gcloud services enable vision.googleapis.com
 gcloud services enable cloudfunctions.googleapis.com
 gcloud services enable sourcerepo.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
 echo 'creating bucket with same name as projet and copying in default images'
 gsutil mb -c multi_regional gs://$GOOGLE_CLOUD_PROJECT/
 gsutil cp ../frontend/static/images/NoImage.jpg gs://$GOOGLE_CLOUD_PROJECT/
