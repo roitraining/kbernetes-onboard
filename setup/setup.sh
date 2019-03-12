@@ -36,7 +36,7 @@ echo 'deploying appengine backend service'
 cd ../backend
 yes Y | gcloud app deploy
 echo 'completed successfully'
-echo 'use app engine to create a few happenings'
+echo 'Now use app engine to create a few "happenings"!'
 
 
 
