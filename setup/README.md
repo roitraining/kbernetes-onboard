@@ -18,7 +18,7 @@ appropriately. There is a helpful setup script, but some steps cannot, at time o
 scripted.
 
 Any UI instructions below are correct at the time of writing, but subject to change. You will 
-need to adjust accordingly.
+need to adjust accordingly if you encounter any errors.
 
 # Prerequisites before you do anything at all:
 
@@ -99,6 +99,9 @@ echo $MYDOMAIN
 
 8. Makes sure you are in the setup directory and run the following commands to run 
 the setup script
+
+# WARNING! if you haven't created the firestore db, do it now, or you will have 
+# to start again in a new project
 
 chmod +x setup.sh
 ./setup.sh
