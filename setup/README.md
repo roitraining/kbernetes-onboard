@@ -2,15 +2,23 @@
 
 # WARNING!  THERE ARE STEPS YOU MUST COMPLETE BEFORE RUNNING THE SETUP SCRIPT
 
-The app has been designed (and appropriate ports used) to allow you to run all of the activities/demos from cloud shell.  However, it would be helpful if you could also configure your environment to run the non-containerized application on your laptop.  This then supports the story of: how do I get from my environment into kubernetes engine. (Also, you will not 
-be able to demonstrate the fulling working app in cloud shell, just individual parts).
+The app has been designed (and appropriate ports used) to allow you to run all of the 
+activities/demos from cloud shell.  However, it would be helpful if you could also configure 
+your environment to run the non-containerized application on your laptop.  This then supports 
+the story of: how do I get from my environment into kubernetes engine. (Also, you will not 
+be able to demonstrate the full working app in cloud shell, just individual parts).
 
-Guidance for setting up and running the app locally are at the bottom of this file.  The backend api is a simple node application using express.  The frontend is a python3 flask application.  
+Guidance for setting up and running the app locally are at the bottom of this file.  The 
+backend api is a simple node application using express.  The frontend is a python3 flask 
+application.  
 
 Regardless of whether you demo locally at the beginning, or exclusively in cloud shell, 
-you will need to follow the instructions below to set up a cloud  project and configure it appropriately. There are helpful setup scripts, but some steps cannot, at time of writing, be scripted.
+you will need to follow the instructions below to set up a cloud project and configure it 
+appropriately. There is a helpful setup script, but some steps cannot, at time of writing, be 
+scripted.
 
-Any UI instructions below are correct at the time of writing, but subject to change. You will need to adjust accordingly.
+Any UI instructions below are correct at the time of writing, but subject to change. You will 
+need to adjust accordingly.
 
 # Prerequisites before you do anything at all:
 
@@ -30,20 +38,27 @@ You must do the following:
 
 1. Create a new google cloud project to host the onboard example
 2. Use the cloud console to create an empty Firestore database in native mode in the US Region. 
-    WARNING! If you don't create the firestore db before you run the setup script, you will have to start again in a new project: the appengine deployment will (at least at the time of writing) permanently configure your project to use datastore instead. 
-3. Run the following command in cloud shell in your new project to create a static ip called 'hip-local' (this will require you to confirm enabling an api):
+    WARNING! If you don't create the firestore db before you run the setup script, 
+    you will have to start again in a new project: the appengine deployment will 
+    (at least at the time of writing) permanently configure your project to use datastore 
+    instead. 
+3. Run the following command in cloud shell in your new project to create a static ip called 
+'hip-local' (this will require you to confirm enabling an api):
 
     gcloud compute addresses create hip-local --global
     
-4. Find the ip in the External Ip Addresses section of the console, and hten go to the DNS management screens for a domain name you control and create a DNS entry for:
+4. Find the ip in the External Ip Addresses section of the console, and then go to the DNS 
+management screens for a domain name you control and create a DNS entry for:
 
  hiplocal.[yourdomain.ext] 
 
- pointing at the hip-local static ip address. Make a note of what you create, as you'll soon need to set it as an environment variable.
+pointing at the hip-local static ip address. Make a note of what you create, as you'll  
+need it in a moment.
 
 
 # Setting up the environment and running the script
-1. Open a cloud shell window in your new project and clone this repository: 
+1. If you have not already done so, open a cloud shell window in your new project 
+and clone this repository: 
 
     gcloud source repos clone onboard --project=kr-dr-temp-hip
 
@@ -60,7 +75,7 @@ You must do the following:
     - Add two domains to the list of authorized domains 
         hiplocal.[yourdomain.ext]
         [yourprojectid].appspot.com
-    - Click Web Setup button (at top right)  and opy the web setup config
+    - Click Web Setup button (at top right) and copy the web setup config
 4. Paste the config you copied from firebase over the matching section in layout.html
     (It is at the end of the head section).
 5. return to cloud shell and cd into the setup directory 
@@ -68,7 +83,7 @@ You must do the following:
 
 export MYDOMAIN=[hiplocal.yourdomain.ext]
 
-10. Check that it was set correctly:
+7. Check that it was set correctly:
 
 echo $MYDOMAIN
 
@@ -82,7 +97,8 @@ echo $MYDOMAIN
     - commits changes, creats a repo in your project and pushes the modified code and instructions
     - Deploys the app to AppEngine so that you can use it to create some content for the website before the onboard.
 
-11. Run the following commands to run the setup script
+8. Makes sure you are in the setup directory and run the following commands to run 
+the setup script
 
 chmod +x setup.sh
 ./setup.sh
@@ -91,7 +107,7 @@ chmod +x setup.sh
 # The end result give you the base application BEFORE any docker or kubernetes config
 # as well as a complete list of demo instructions in the setup folder
 
-12. Use the app engine application to add some happenings, with pictures,
+9. Use the app engine application to add some happenings, with pictures,
    to give an attractive start-point for the app
 
 
@@ -124,4 +140,7 @@ If you are going to run the apps on your machine, you need to do/have the follow
         - you should then be able to start the backend using:
             npm start
 
-# If you choose not to set it up locally (or don't have the time), you will need to demo in cloud shell.  That will involve many of the same steps as above, but with less installation of basic tools.
+# If you choose not to set it up locally (or don't have the time), you will need to 
+# demo in cloud shell.  That will involve many of the same steps as above, but with 
+# less installation of basic tools. You will not be able to demo the complete 
+# application in cloud shell, just the consituent parts.
