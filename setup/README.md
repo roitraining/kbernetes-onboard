@@ -6,7 +6,10 @@ The app has been designed (and appropriate ports used) to allow you to run all o
 activities/demos from cloud shell.  However, it would be helpful if you could also configure 
 your environment to run the non-containerized application on your laptop.  This then supports 
 the story of: how do I get from my environment into kubernetes engine. (Also, you will not 
-be able to demonstrate the full working app in cloud shell, just individual parts).
+be able to demonstrate the full working app in cloud shell, just individual parts). And as 
+a final incentive... if, once you have completed the setup in your project, you clone your 
+copy of the repo to your machine, you will be able to run the demos from there should there
+be any issues with cloud shell or the code editor.
 
 Guidance for setting up and running the app locally are at the bottom of this file.  The 
 backend api is a simple node application using express.  The frontend is a python3 flask 
@@ -89,13 +92,15 @@ echo $MYDOMAIN
 
 # WARNING! You are about to run the setup script. At the time of writing, it runs to  
 # completion and all steps succeed, but the cloud is always changing.  Be careful to watch 
-# for error messages as it runs so that you can backfill anything that failed. The script does # the following:
+# for error messages as it runs so that you can backfill anything that failed. The script does
+# the following:
     - enables apis
     - creates a bucket for images, uploads files and sets permissions
     - deploys a cloud function to resize and approve images
-    - rewrites the demo instructions and code samples to use your domain and projects
+    - rewrites the demo instructions and code samples to use your domain and project id
     - commits changes, creats a repo in your project and pushes the modified code and instructions
-    - Deploys the app to AppEngine so that you can use it to create some content for the website before the onboard.
+    - Deploys the app to AppEngine so that you can use it to create some content for the
+    website before the onboard (and make sure authentication works).
 
 8. Makes sure you are in the setup directory and run the following commands to run 
 the setup script
@@ -107,10 +112,11 @@ chmod +x setup.sh
 ./setup.sh
 
 # This will take quite a while. It deploys a cloud function and an AppEngine application
-# The end result give you the base application BEFORE any docker or kubernetes config
-# as well as a complete list of demo instructions in the setup folder
+# The end result give you the base application BEFORE any docker or kubernetes config,
+# as well as a complete set of demo instructions in the setup folder, customized for 
+# your project
 
-9. Use the app engine application to add some happenings, with pictures,
+9. When it's done, use the app engine application to add some happenings, with pictures,
    to give an attractive start-point for the app
 
 
