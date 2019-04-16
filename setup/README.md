@@ -78,7 +78,9 @@ and clone this repository:
     - Add two domains to the list of authorized domains 
         hiplocal.[yourdomain.ext]
         [yourprojectid].appspot.com
-    - Click Web Setup button (at top right) and copy the web setup config
+    - Select Project Overview (top of left menu)
+    - on project overview page, select +Add App, and choose the web option "</>"
+    - Copy the config code
 4. Paste the config you copied from firebase over the matching section in layout.html
     (It is at the end of the head section).
 5. return to cloud shell and cd into the setup directory 
